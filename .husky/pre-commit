@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
 fi;
 
 # Rodar os testes
-php artisan test --parallel 
+./vendor/bin/sail test --parallel 
 if [ $? -ne 0 ]; then
     echo "Ocorreu um erro na execução dos testes";
     exit 1;
