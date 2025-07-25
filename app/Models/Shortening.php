@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $full_url
+ * @property string $original_url
  * @property string $slug
  */
 class Shortening extends Model

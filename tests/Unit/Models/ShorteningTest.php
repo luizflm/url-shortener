@@ -11,7 +11,7 @@ test('to array', function (): void {
     $shortening = Shortening::factory()->create()->refresh();
     expect(array_keys($shortening->toArray()))->toEqual([
         'id',
-        'full_url',
+        'original_url',
         'slug',
         'created_at',
         'updated_at',

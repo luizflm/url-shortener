@@ -12,7 +12,7 @@ return new class () extends Migration {
     {
         Schema::create('shortenings', function (Blueprint $table) {
             $table->id();
-            $table->text('full_url')->unique();
+            $table->text('original_url')->unique();
             $table->string('slug')->unique();
             $table->timestamps();
         });

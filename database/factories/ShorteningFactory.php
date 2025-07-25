@@ -18,8 +18,8 @@ class ShorteningFactory extends Factory
     public function definition(): array
     {
         return [
-            'full_url' => $this->faker->url(),
-            'slug'     => Str::random(6),
+            'original_url' => $this->faker->url(),
+            'slug'         => Str::random(6),
         ];
     }
 }
