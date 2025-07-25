@@ -5,6 +5,8 @@ use Illuminate\Foundation\Configuration\{Exceptions, Middleware};
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
+        api: __DIR__ . '/../routes/api.php',
+        apiPrefix: '',
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
