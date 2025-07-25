@@ -12,7 +12,7 @@ test('to array', function (): void {
     expect(array_keys($shortening->toArray()))->toEqual([
         'id',
         'full_url',
-        'hash',
+        'slug',
         'created_at',
         'updated_at',
     ]);

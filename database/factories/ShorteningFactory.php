@@ -19,7 +19,7 @@ class ShorteningFactory extends Factory
     {
         return [
             'full_url' => $this->faker->url(),
-            'hash'     => Str::random(6),
+            'slug'     => Str::random(6),
         ];
     }
 }

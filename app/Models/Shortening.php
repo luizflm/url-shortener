@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property string $full_url
- * @property string $hash
+ * @property string $slug
  */
 class Shortening extends Model
 {
