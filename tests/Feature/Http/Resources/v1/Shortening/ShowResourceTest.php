@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Resources\v1\ShorteningResource;
+use App\Http\Resources\v1\Shortening\ShowResource;
 use App\Models\Shortening;
 use Illuminate\Http\Request;
 
@@ -10,8 +10,8 @@ it('transforms shortening resource into array with slug', function () {
         'slug'         => 'abc123',
     ])->fresh();
 
-    expect((new ShorteningResource($shortening))->toArray(new Request()))
+    expect((new ShowResource($shortening))->toArray(new Request()))
     ->toBe([
-        'slug' => $shortening->slug,
+        'url' => 'https://test.com',
     ]);
 });
