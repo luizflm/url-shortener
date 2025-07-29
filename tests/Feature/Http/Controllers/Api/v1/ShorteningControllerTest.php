@@ -21,7 +21,7 @@ it('can store a shortening', function () {
     // Assert: Check if the response format is correct
     $response->assertJsonStructure([
         'data' => [
-            'url',
+            'slug',
         ],
     ]);
 });
@@ -41,7 +41,7 @@ it('returns an existing shortening if the submitted url has already been shorten
     // Assert: Check if the response format is correct
     $response->assertJsonStructure([
         'data' => [
-            'url',
+            'slug',
         ],
     ]);
 });

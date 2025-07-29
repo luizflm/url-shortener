@@ -14,7 +14,7 @@ class ShorteningResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'url' => $this->getShorteningUrl(),
+            'slug' => $this->slug,
         ];
     }
 }

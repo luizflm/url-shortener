@@ -12,10 +12,3 @@ test('to array', function (): void {
         'updated_at',
     ]);
 });
-
-it('returns the correct shortening URL', function (): void {
-    $shortening    = Shortening::factory()->create()->fresh();
-    $shorteningUrl = url("/{$shortening->slug}");
-
-    expect($shortening->getShorteningUrl())->toBe($shorteningUrl);
-});

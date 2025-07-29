@@ -13,12 +13,4 @@ use Illuminate\Database\Eloquent\Model;
 class Shortening extends Model
 {
     use HasFactory;
-
-    /**
-     * Get the current application url with a shortening's slug.
-     */
-    public function getShorteningUrl(): string
-    {
-        return url("/{$this->slug}");
-    }
 }
