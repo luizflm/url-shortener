@@ -1,0 +1,103 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Shortening API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/shortenings": {
+      "post": {
+        "summary": "Create a new URL shortening",
+        "tags": ["Shortenings"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "example": "https://test.com/"
+                  }
+                },
+                "required": ["url"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Shortening created successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": {
+                    "slug": "l0BkXK"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "The url field is required.",
+                  "errors": {
+                    "url": [
+                      "The url field is required."
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shortenings/{slug}": {
+      "get": {
+        "summary": "Retrieve original URL by shortening",
+        "tags": ["Shortenings"],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "l0BkXK"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Shortening found successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": {
+                    "url": "https://test.com/"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Shortening not found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": "Resource not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
