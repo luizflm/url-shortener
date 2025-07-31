@@ -97,9 +97,12 @@ describe('show', function () {
         ]);
     });
 
-    it('returns 404 when category not found', function (): void {
-        $response = $this->getJson('/api/v1/categories/non-existent-slug');
+    it('returns 404 if shortening was not found', function (): void {
+        $response = $this->getJson('/api/v1/shortenings/non-existent-slug');
 
         $response->assertStatus(404);
+        $response->assertJsonStructure([
+            'errors',
+        ]);
     });
 });
