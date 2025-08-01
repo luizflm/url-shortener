@@ -1,61 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# URL Shortener API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is the backend of the URL Shortener project.
 
-## About Laravel
+## Requirements
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+If you use docker, you don't need to install any of the following requirements, but if you want to run the application locally, you need to install the following:
+- PHP 8.2
+- Composer
+- Node.js 22.x
+- NPM
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+URL Shortener backend is a Laravel API application; it's build on top of Laravel 12 and uses a PostgreSQL database. 
 
-## Learning Laravel
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/luizflm/url-shortener.git
+    cd url-shortener
+    ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Install Composer Dependencies (using Docker)
+    ```sh
+    docker run --rm --interactive --tty \
+        -v $(pwd):/app \
+        composer install
+    ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Run Sail to start the development server:
+    ```sh
+    ./vendor/bin/sail up -d
+    ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Connect to the container:
+    ```sh
+    ./vendor/bin/sail shell
+    ```
 
-## Laravel Sponsors
+4. Install Node.js dependencies:
+    ```sh
+    npm install
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+6. Copy the example environment file and generate an application key:
+    ```sh
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-### Premium Partners
+7. Create the PostgreSQL database and run migrations:
+    ```sh
+    php artisan migrate
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Packages
 
-## Contributing
+### For Prod
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### # [darkaonline/l5-swagger](https://github.com/DarkaOnLine/L5-Swagger)
 
-## Code of Conduct
+L5 Swagger - OpenApi or Swagger Specification for Laravel project made easy.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### For dev:
 
-## Security Vulnerabilities
+#### # [Sail](https://laravel.com/docs/10.x/sail)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Laravel Sail is a light-weight command-line interface for interacting with Laravel's default Docker development
+environment.
 
-## License
+#### # [Pest](https://pestphp.com)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Pest is a testing framework with a focus on simplicity,
+meticulously designed to bring back the joy of testing in PHP.
+
+#### # [Larastan](https://github.com/nunomaduro/larastan)
+
+Larastan focuses on finding errors in your code. It catches whole classes of bugs even before you write tests for the
+code.
+
+#### # [Laravel Pint](https://laravel.com/docs/10.x/pint)
+
+Laravel Pint is an opinionated PHP code style fixer for minimalists.
+
+## API Documentation
+
+The API documentation is available at `/api/documentation` route.
+
+## Testing
+
+To run all tests, use the following command:
+
+``` sh
+    composer test
+```
