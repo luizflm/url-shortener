@@ -1,13 +1,12 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "luizflm/url-shortener",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "This is the backend of the URL Shortener project.",
     "keywords": [
         "laravel",
-        "framework"
+        "api"
     ],
-    "license": "MIT",
     "require": {
         "php": "^8.2",
         "darkaonline/l5-swagger": "^9.0",
@@ -59,7 +58,8 @@
         ],
         "test": [
             "@php artisan config:clear --ansi",
-            "@php artisan test"
+            "@php artisan test",
+            "phpstan analyse"
         ]
     },
     "extra": {
